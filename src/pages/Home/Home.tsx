@@ -13,7 +13,7 @@ const Home: React.FC = () => (
         <p className="mt-2 w-50">
             Esperamos poder ayudarte, por favor, si te has registrado, pincha en el botón de abajo para comenzar:
         </p>
-        <Link to={PATHS.TASK}><Button label="Comenzar" /></Link>
+        <Link to={PATHS.TASK}><Button dataTestid="button-next-page" label="Comenzar" /></Link>
     </PageTemplate>
 )
 
