@@ -1,16 +1,21 @@
-import React from "react";
+import React, {lazy, Suspense} from "react";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
+import Loading from "../components/Loading/Loading.tsx";
+import {PATHS} from "./paths.ts";
+
+const Home = lazy(() => import("../pages/Home/Home.tsx"));
+const Task = lazy(() => import("../pages/Task/Task.tsx"));
 
 
 const Root: React.FC = () =>(
-    <BrowserRouter>
-        <Routes>
-            <Route path="/" element={<h1 className="text-3xl font-bold underline">
-                Hello world!
-            </h1>}/>
-            <Route path="/task" element={<div>Task</div>}/>
-        </Routes>
-    </BrowserRouter>
+    <Suspense fallback={<Loading />}>
+        <BrowserRouter>
+            <Routes>
+                <Route path={PATHS.HOME} element={<Home />}/>
+                <Route path={PATHS.TASK} element={<Task />}/>
+            </Routes>
+        </BrowserRouter>
+    </Suspense>
 )
 
 
